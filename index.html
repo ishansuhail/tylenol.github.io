@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restricted Input</title>
+<style>
+    body {
+        font-family: Poppins; 
+        font-weight: 800;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #FFB6C1;
+    }
+    #input-container {
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+
+<div id="input-container">
+    <label for="medicineInput" style="color: #03045E;">Enter password: </label>
+    <input type="text" id="medicineInput">
+    <button id="enterButton" style="margin-top: 10px;">Enter</button>
+    <p id="errorMessage" style="color: red; display: none;">Hint: the safe word.</p>
+</div>
+
+<script>
+    const inputField = document.getElementById('medicineInput');
+    const enterButton = document.getElementById('enterButton');
+    const errorMessage = document.getElementById('errorMessage');
+
+    function checkPassword() {
+        if (inputField.value.toLowerCase() !== 'tylenol') {
+            errorMessage.style.display = 'block';
+        } else {
+            errorMessage.style.display = 'none';
+            
+            window.location.href = 'figma.html';
+        }
+    }
+
+    inputField.addEventListener('input', function() {
+        errorMessage.style.display = 'none'; 
+    });
+
+    enterButton.addEventListener('click', function() {
+        checkPassword();
+    });
+
+    inputField.addEventListener('keyup', function(event) {
+        if (event.keyCode === 13) { 
+            checkPassword();
+        }
+    });
+</script>
+
+</body>
+</html>
+
